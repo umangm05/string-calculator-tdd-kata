@@ -29,3 +29,7 @@ describe('add', () => {
   it('throws when a negative number is provided', () => {
     expect(() => add('1,-2,3')).toThrow('negative numbers not allowed -2')
   })
+
+  it('lists all negatives in the error message', () => {
+    expect(() => add('-1,-2,3,-4')).toThrow('negative numbers not allowed -1,-2,-4')
+  })
