@@ -25,3 +25,7 @@ describe('add', () => {
   it('supports a custom delimiter declared in a header line', () => {
     expect(add('//;\n1;2')).toBe(3)
   })
+
+  it('throws when a negative number is provided', () => {
+    expect(() => add('1,-2,3')).toThrow('negative numbers not allowed -2')
+  })

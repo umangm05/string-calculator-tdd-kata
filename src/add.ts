@@ -11,5 +11,11 @@ export function add(numbers: string): number {
 
   const normalized = working.replace(/\n/g, delimiter)
   const parts = normalized.split(delimiter).filter(Boolean)
-  return parts.map(Number).reduce((sum, value) => sum + value, 0)
+  const values = parts.map(Number)
+  const negatives = values.filter((n) => n < 0)
+  if (negatives.length > 0) {
+    throw new Error(`negative numbers not allowed ${negatives.join(',')}`)
+  }
+  if (values.length === 1) return values[0]
+  return values.reduce((sum, value) => sum + value, 0)
 }
