@@ -1,5 +1,5 @@
-export function add(numbers: string): number {
-  if (numbers === '') return 0
+export function multiply(numbers: string): number {
+  if (numbers === '') return 1
   // Support custom delimiter header: "//<delimiter>\n"
   let working = numbers
   let delimiter = ','
@@ -16,6 +16,5 @@ export function add(numbers: string): number {
   if (negatives.length > 0) {
     throw new Error(`negative numbers not allowed ${negatives.join(',')}`)
   }
-  if (values.length === 1) return values[0]
-  return values.reduce((sum, value) => sum + value, 0)
+  return values.reduce((sum, value) => sum * value, 1)
 }
